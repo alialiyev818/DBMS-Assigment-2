@@ -5,6 +5,7 @@ CREATE TABLE Authors (
     Bio TEXT
 );
 
+
 -- Create Books Table
 CREATE TABLE Books (
     BookID SERIAL PRIMARY KEY,
