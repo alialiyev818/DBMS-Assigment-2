@@ -16,6 +16,7 @@ CREATE TABLE Books (
     PublishedDate DATE
 );
 
+
 -- Create Customers Table
 CREATE TABLE Customers (
     CustomerID SERIAL PRIMARY KEY,
