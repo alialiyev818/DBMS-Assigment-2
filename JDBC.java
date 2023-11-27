@@ -2,7 +2,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class app {
+public class JDBC {
     private static final String URL = "";
     private static final String USER = "";
     private static final String PASSWORD = "";
@@ -11,4 +11,3 @@ public class app {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 }
-
