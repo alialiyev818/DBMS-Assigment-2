@@ -1,3 +1,5 @@
+import java.sql.Date;
+
 public class Book {
     private int bookId;
     private String title;
@@ -5,14 +7,7 @@ public class Book {
     private String isbn;
     private double price;
     private int stock;
+    private Date publishedDate;
 
-    // Constructor
-    public Book(int bookId, String title, int authorId, String isbn, double price, int stock) {
-        this.bookId = bookId;
-        this.title = title;
-        this.authorId = authorId;
-        this.isbn = isbn;
-        this.price = price;
-        this.stock = stock;
-       
+    // Getters and Setters
 }
