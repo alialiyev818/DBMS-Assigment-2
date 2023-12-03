@@ -1,46 +1,32 @@
--- Create Authors Table
 CREATE TABLE Authors (
-    AuthorID SERIAL PRIMARY KEY,
-    Name VARCHAR(100) NOT NULL,
-    Bio TEXT
+    author_id INT PRIMARY KEY,
+    name VARCHAR(20)
 );
 
 
--- Create Books Table
 CREATE TABLE Books (
-    BookID SERIAL PRIMARY KEY,
-    Title VARCHAR(255) NOT NULL,
-    AuthorID INT REFERENCES Authors(AuthorID),
-    ISBN VARCHAR(20),
-    Price DECIMAL(10, 2),
-    Stock INT NOT NULL,
-    PublishedDate DATE
+    book_id INT PRIMARY KEY,
+    name VARCHAR(30),
+    quantity INT,
+    author_id INT,
+    FOREIGN KEY (author_id) REFERENCES Authors(author_id)
 );
 
 
--- Create Customers Table
+
 CREATE TABLE Customers (
-    CustomerID SERIAL PRIMARY KEY,
-    FirstName VARCHAR(50),
-    LastName VARCHAR(50),
-    Email VARCHAR(100),
-    Address TEXT,
-    PhoneNumber VARCHAR(20)
+    customer_id INT PRIMARY KEY,
+    name VARCHAR(20),
+    age INT
 );
 
--- Create Orders Table
+
 CREATE TABLE Orders (
-    OrderID SERIAL PRIMARY KEY,
-    CustomerID INT REFERENCES Customers(CustomerID),
-    OrderDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    TotalAmount DECIMAL(10, 2)
-);
-
--- Create OrderDetails Table to manage the many-to-many relationship between Orders and Books
-CREATE TABLE OrderDetails (
-    OrderID INT REFERENCES Orders(OrderID),
-    BookID INT REFERENCES Books(BookID),
-    Quantity INT NOT NULL,
-    PriceAtTimeOfOrder DECIMAL(10, 2),
-    PRIMARY KEY (OrderID, BookID)
+    order_id INT PRIMARY KEY,
+    payment INT,
+    customer_id INT,
+    book_id INT,
+    orders_quantity INT,
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id),
+    FOREIGN KEY (book_id) REFERENCES Books(book_id)
 );
