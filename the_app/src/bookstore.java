@@ -25,6 +25,8 @@ public class bookstore {
                     break;
                 case "3":
                     insertCustomer(scanner, conn);
+                case "4":
+                    insertOrder(scanner, conn);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -93,4 +95,48 @@ public class bookstore {
         }
     }
 
+    private static void insertOrder(Scanner scanner, Connection conn) throws SQLException {
+        System.out.println("Inserting a new order.");
+        System.out.print("Enter order ID: ");
+        int orderId = Integer.parseInt(scanner.nextLine());
+        System.out.print("Enter payment amount: ");
+        int payment = Integer.parseInt(scanner.nextLine());
+        System.out.print("Enter customer ID: ");
+        int customerId = Integer.parseInt(scanner.nextLine());
+        System.out.print("Enter book ID: ");
+        int bookId = Integer.parseInt(scanner.nextLine());
+        System.out.print("Enter order quantity: ");
+        int orderQuantity = Integer.parseInt(scanner.nextLine());
+
+        String sql = "INSERT INTO Orders (order_id, payment, customer_id, book_id, orders_quantity) VALUES (?, ?, ?, ?, ?)";
+        String checkStock = "SELECT quantity FROM Books WHERE book_id = ?";
+        String updateQuantitySql = "UPDATE Books SET quantity = quantity - ? WHERE book_id = ?";
+
+        try (PreparedStatement checkQuantity = conn.prepareStatement(checkStock)) {
+
+            checkQuantity.setInt(1, bookId);
+            ResultSet resultSet = checkQuantity.executeQuery();
+
+            if (!resultSet.next() || resultSet.getInt("quantity") < orderQuantity) {
+                throw new SQLException("There is not enough books in the stock");
+            }
+        }
+
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, orderId);
+            pstmt.setInt(2, payment);
+            pstmt.setInt(3, customerId);
+            pstmt.setInt(4, bookId);
+            pstmt.setInt(5, orderQuantity);
+            pstmt.executeUpdate();
+            System.out.println("Order added successfully.");
+        }
+
+
+        try (PreparedStatement updateBookVolumeStmt = conn.prepareStatement(updateQuantitySql)) {
+            updateBookVolumeStmt.setInt(1, orderQuantity);
+            updateBookVolumeStmt.setInt(2, bookId);
+            updateBookVolumeStmt.executeUpdate();
+        }
+    }
 }
