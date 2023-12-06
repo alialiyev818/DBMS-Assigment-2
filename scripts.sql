@@ -29,7 +29,7 @@ CREATE TABLE Orders (
     payment INT,
     customer_id INT,
     book_id INT,
-    order_quantity INT,
+    orders_quantity INT,
     FOREIGN KEY (customer_id) REFERENCES Customers(customer_id),
     FOREIGN KEY (book_id) REFERENCES Books(book_id)
 );
