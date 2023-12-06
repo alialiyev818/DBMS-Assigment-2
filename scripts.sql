@@ -1,3 +1,6 @@
+CREATE DATABASE *enter database name*
+
+
 CREATE TABLE Authors (
     author_id INT PRIMARY KEY,
     name VARCHAR(20)
@@ -26,7 +29,7 @@ CREATE TABLE Orders (
     payment INT,
     customer_id INT,
     book_id INT,
-    orders_quantity INT,
+    order_quantity INT,
     FOREIGN KEY (customer_id) REFERENCES Customers(customer_id),
     FOREIGN KEY (book_id) REFERENCES Books(book_id)
 );
