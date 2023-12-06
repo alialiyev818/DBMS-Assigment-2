@@ -38,7 +38,7 @@ Before beginning, ensure you have the following installed:
 ## Creating the Database
 
 1. Create a PostgreSQL database using either the terminal or pgAdmin.
-2. Locate the SQL queries in the submitted Word files.
+2. Locate the SQL queries in the submitted Word files or in the (`scripts.sql`) which can be found in the github repository.
 3. Connect to the database and execute the CREATE queries in sequence, either via terminal or pgAdmin's query tool.
 4. Note the database name, PostgreSQL username (default 'postgres'), and the password set during installation.
 
