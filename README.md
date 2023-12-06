@@ -1,63 +1,66 @@
-# Instructions to run the program
+# Instructions to Run the Program
 
-## Prerequiisists
+## Prerequisites
 
-Before we start, make sure yoou have the following:
+Before beginning, ensure you have the following installed:
 
-* PostreSQL
-* intelliJ IDEA community edition 
-* Posgres-JDBC driver (https://jdbc.postgresql.org/download/)
+* PostgreSQL
+* IntelliJ IDEA Community Edition
+* PostgreSQL JDBC Driver ([Download Here](https://jdbc.postgresql.org/download/))
 
-Download the repo:
+## Downloading the Repository
 
-First of all go to the git repository (https://github.com/alialiyev818/Assignment-2), click on the code button and click on download ZIP.
+1. Visit the GitHub repository at [https://github.com/alialiyev818/Assignment-2](https://github.com/alialiyev818/Assignment-2).
+2. Click on the 'Code' button and select 'Download ZIP'.
 
-## On intelliJ IDEA: 
+![Alt text](image.png)
 
-1) Open the 'the_app' folder with intelliJ IDEA
+## Setting Up in IntelliJ IDEA
 
-2) Click on 'file' option on top of the editor and select 'project structure'
+1. Open the 'the_app' folder in IntelliJ IDEA.
+2. Navigate to 'File' > 'Project Structure'.
+3. In the 'Project' section, select an SDK version (preferably version 20).
+4. Set the language level to match the SDK version (e.g., '20-no new language features'). Avoid preview versions.
+5. Click on 'Apply'.
 
-3) from the left side menu there, go to the option called 'project'.
+![Alt text](image-1.png)
 
-4) select an SDK version. If available selecting 20 is recommended.
+5. Go to 'Modules' > 'Dependencies'. Set the Module SDK to the version chosen earlier.
+6. Click the plus icon (+) and select 'JARs or Directories'. Locate and add the PostgreSQL JDBC driver (`postgresql-XX.X.X.jar`).
+7. Ensure these elements are in the following order:
+   - Oracle OpenJDK version (e.g., 20)
+   - postgresql-XX.X.X.jar
+   - Module Source
+8. At the bottom of this window, ensure the 'Dependencies storage format' is set to IntelliJ IDEA (.iml), then click 'Apply' and 'OK'.
 
-5) Also select the language level the same as you chose the SDK version. Again '20-no new language features' is the recommended option but if you have chosen a different SDK version, make sure that it matches that. Please don't choose any of the preview versions. 
+![Alt text](image-2.png)
 
-6) Click on apply and select modules from the side menu. There, click on dependencies. Select the same SDK version (which you chose in the Project section) from Module SDK option under the dependencies tab.
+## Creating the Database
 
-7) Click on the plus icon and select 'JARs or Directories'. Then you need to locate the JDBC driver (postgresql-XX.X.X.jar) on your device, which I have included in the things you will need as 'Posgres-JDBC driver'. You can find the link there as well. Once you find it, click on it once and select okay. 
+1. Create a PostgreSQL database using either the terminal or pgAdmin.
+2. Locate the SQL queries in the submitted Word files.
+3. Connect to the database and execute the CREATE queries in sequence, either via terminal or pgAdmin's query tool.
+4. Note the database name, PostgreSQL username (default 'postgres'), and the password set during installation.
 
-8) Once you add it, there should be a total of 3 elements, in the following order: 
+## Setting Up the Code
 
-- Oracle OpenDJK version (20 in my case)
+1. Open the 'bookstore.java' file in the src folder.
+2. Replace the placeholders in the following code snippet with your database details:
 
-- postgresql-XX.X.X.jar
+    ```java
+    private static final String DATABASE_URL = "jdbc:postgresql://localhost:5432/your_database_name";
+    private static final String DB_USER = "your_username";
+    private static final String DB_PASSWORD = "your_password";
+    ```
 
-- Module Source
+3. Click the green 'Run' button in the top right corner of IntelliJ.
 
-The order is important and you need to make sure that it's in this order before running the application
+![Alt text](image-3.png)
 
-9) Make sure that the Dependencies storage format is selected as intelliJ IDEA (.iml) on the bottom of this window and click on apply and then okay.
+## Using the Program
 
+To use the program, type the number corresponding to the desired function in the console and press 'Enter'. Ensure there are no spaces before or after the number.
 
-## Creating the database:
+![Alt text](image-4.png)
 
-1) Create a postgres database either using the terminal or pgAdmin. 
-
-2) Find the SQL querries located in the submitted word files.
-
-3) Either connect to the database using terminal and run the CREATE querries in order one by one or do the same directly in pgadmin using the database's query tool. (You still should run the CREATE querries one by one).
-
-4) Keep in mind the name of the database, username name of postgres (it's postgres by default), and the password you have created when you installed postgres.
-
-
-## Setting up the code:
-
-1) Main java file is located in the src folder, so go ahead and click on the 'bookstore.java' file twice to view the code.
-
-2) There, locate the following code and fill in the information that I told you to remember in the previous step. Regarding the database name, you just need to change last part 'bookstore' to the name of your new database:
-
-    private static final String DATABASE_URL = "jdbc:postgresql://localhost:5432/bookstore";
-    private static final String DB_USER = "postgres";
-    private static final String DB_PASSWORD = "8118";
+# Enjoy the Program!!!
