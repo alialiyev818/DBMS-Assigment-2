@@ -10,7 +10,7 @@ Before beginning, ensure you have the following installed:
 
 ## Downloading the Repository
 
-1. Visit the GitHub repository at [https://github.com/alialiyev818/Assignment-2](https://github.com/alialiyev818/Assignment-2).
+1. Visit the GitHub repository at [https://github.com/alialiyev818/DBMS-Assigment-2](https://github.com/alialiyev818/Assignment-2).
 2. Click on the 'Code' button and select 'Download ZIP'.
 
 ![Alt text](image.png)
